@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpxw854o23v8f"]
+
+[ext_resource type="Texture2D" uid="uid://d0vlc68mky5rj" path="res://assets/icon.svg" id="1_rnd2m"]
+[ext_resource type="PackedScene" uid="uid://bo8asfj5dcglb" path="res://scenes/enemy_gun.tscn" id="2_jx7fp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8yq8q"]
+size = Vector2(124, 124)
+
+[node name="Turret_Enemy" type="CharacterBody2D"]
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_rnd2m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8yq8q")
+
+[node name="Enemy_Gun" parent="." instance=ExtResource("2_jx7fp")]

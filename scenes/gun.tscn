@@ -1,12 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctku5i4bqw1eq"]
+[gd_scene load_steps=4 format=3 uid="uid://ctku5i4bqw1eq"]
 
 [ext_resource type="Script" path="res://scripts/gun.gd" id="1_rfps4"]
-[ext_resource type="Texture2D" uid="uid://d0vlc68mky5rj" path="res://icon.svg" id="2_k3oiq"]
+[ext_resource type="Texture2D" uid="uid://d0vlc68mky5rj" path="res://assets/icon.svg" id="2_k3oiq"]
+[ext_resource type="Script" path="res://scripts/muzzle.gd" id="3_2bie8"]
 
 [node name="Gun" type="Node2D"]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_rfps4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(80, 0)
+position = Vector2(100, 0)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_k3oiq")
+
+[node name="Muzzle" type="Node2D" parent="."]
+position = Vector2(100, 0)
+script = ExtResource("3_2bie8")
