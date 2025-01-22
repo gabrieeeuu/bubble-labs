@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_3gw7e"]
 radius = 50.1597
 
-[node name="EnemyBubble" type="CharacterBody2D"]
+[node name="EnemyBubble" type="Area2D"]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_fl1o6")
 
@@ -16,3 +16,5 @@ texture = ExtResource("1_k5461")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3gw7e")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,10 +1,19 @@
 extends Node2D
 
-var bubble_path = preload("res://scenes/bubble.tscn")
+var bubble_path = preload("res://scenes/enemy_bubble.tscn")
 
+@export var timer_duration = 2.0
+@export var timer = 2.0
+
+func _ready() :
+	timer = timer_duration
+	
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("fire_platform"):
+	timer -= delta
+	
+	if timer <= 0:
 		fire()
+		timer = timer_duration
 
 func fire():
 	var bubble = bubble_path.instantiate()

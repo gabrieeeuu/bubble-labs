@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Area2D
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
@@ -17,3 +17,10 @@ func _physics_process(delta: float) -> void:
 	bubble_tween.parallel().tween_property(sprite_2d, "scale", Vector2(bubble_scale, bubble_scale), duration)
 	await get_tree().create_timer(destroy_bubble_timer).timeout
 	queue_free()
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		body.take_damage(1)
+		print("Player Hit")
+		queue_free()
