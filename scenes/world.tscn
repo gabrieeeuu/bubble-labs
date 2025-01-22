@@ -1,0 +1,146 @@
+[gd_scene load_steps=16 format=3 uid="uid://dk02dyilyjx3p"]
+
+[ext_resource type="PackedScene" uid="uid://b7qj7j0k2wy8c" path="res://scenes/player.tscn" id="1_d88om"]
+[ext_resource type="Texture2D" uid="uid://d0vlc68mky5rj" path="res://icon.svg" id="2_na84a"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_vcvwa"]
+size = Vector2(1000, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hipk1"]
+size = Vector2(999, 49)
+
+[sub_resource type="QuadMesh" id="QuadMesh_urefj"]
+size = Vector2(5000, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p0klc"]
+size = Vector2(5000, 50)
+
+[sub_resource type="QuadMesh" id="QuadMesh_0wpsh"]
+size = Vector2(5000, 50)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ppn86"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrbu2"]
+size = Vector2(5000, 50)
+
+[sub_resource type="QuadMesh" id="QuadMesh_cq80j"]
+size = Vector2(50, 1000)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kql2w"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ei7f"]
+size = Vector2(50, 1000)
+
+[sub_resource type="QuadMesh" id="QuadMesh_lgpaf"]
+size = Vector2(50, 1000)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7cw0p"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m84jm"]
+size = Vector2(50, 1000)
+
+[node name="World" type="Node2D"]
+position = Vector2(502, 377)
+
+[node name="Player" parent="." instance=ExtResource("1_d88om")]
+position = Vector2(10, -100)
+jump_force = 800
+
+[node name="Platform" type="StaticBody2D" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform"]
+mesh = SubResource("QuadMesh_vcvwa")
+texture = ExtResource("2_na84a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_hipk1")
+
+[node name="Platform2" type="StaticBody2D" parent="."]
+position = Vector2(1119, 250)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform2"]
+mesh = SubResource("QuadMesh_vcvwa")
+texture = ExtResource("2_na84a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_hipk1")
+
+[node name="Platform3" type="StaticBody2D" parent="."]
+position = Vector2(1958, 38)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform3"]
+mesh = SubResource("QuadMesh_vcvwa")
+texture = ExtResource("2_na84a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_hipk1")
+
+[node name="Platform4" type="StaticBody2D" parent="."]
+position = Vector2(2806, -174)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform4"]
+mesh = SubResource("QuadMesh_vcvwa")
+texture = ExtResource("2_na84a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform4"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_hipk1")
+
+[node name="Platform5" type="StaticBody2D" parent="."]
+position = Vector2(2831, 246)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform5"]
+mesh = SubResource("QuadMesh_vcvwa")
+texture = ExtResource("2_na84a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform5"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_hipk1")
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="Top Wall" type="StaticBody2D" parent="Walls"]
+position = Vector2(2500, -25)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Walls/Top Wall"]
+mesh = SubResource("QuadMesh_urefj")
+texture = ExtResource("2_na84a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Top Wall"]
+shape = SubResource("RectangleShape2D_p0klc")
+
+[node name="Bot Wall" type="StaticBody2D" parent="Walls"]
+position = Vector2(2500, 1025)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Walls/Bot Wall"]
+mesh = SubResource("QuadMesh_0wpsh")
+texture = SubResource("CompressedTexture2D_ppn86")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Bot Wall"]
+shape = SubResource("RectangleShape2D_hrbu2")
+
+[node name="Left Wall" type="StaticBody2D" parent="Walls"]
+position = Vector2(25, 500)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Walls/Left Wall"]
+mesh = SubResource("QuadMesh_cq80j")
+texture = SubResource("CompressedTexture2D_kql2w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Left Wall"]
+shape = SubResource("RectangleShape2D_2ei7f")
+
+[node name="Right Wall" type="StaticBody2D" parent="Walls"]
+position = Vector2(4975, 500)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Walls/Right Wall"]
+mesh = SubResource("QuadMesh_lgpaf")
+texture = SubResource("CompressedTexture2D_7cw0p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Right Wall"]
+shape = SubResource("RectangleShape2D_m84jm")

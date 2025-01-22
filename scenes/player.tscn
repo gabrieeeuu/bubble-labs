@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7qj7j0k2wy8c"]
+
+[ext_resource type="Texture2D" uid="uid://d0vlc68mky5rj" path="res://icon.svg" id="1_q66rc"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="2_l7kig"]
+[ext_resource type="Script" path="res://scripts/gun.gd" id="3_y3sh7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qsj3i"]
+size = Vector2(128, 124)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("2_l7kig")
+jump_force = 700
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_q66rc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_qsj3i")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -108)
+
+[node name="Gun" type="Node2D" parent="."]
+script = ExtResource("3_y3sh7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Gun"]
+position = Vector2(80, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_q66rc")
