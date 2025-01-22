@@ -1,13 +1,9 @@
 [gd_scene load_steps=16 format=3 uid="uid://dk02dyilyjx3p"]
 
 [ext_resource type="PackedScene" uid="uid://b7qj7j0k2wy8c" path="res://scenes/player.tscn" id="1_d88om"]
-[ext_resource type="Texture2D" uid="uid://d0vlc68mky5rj" path="res://icon.svg" id="2_na84a"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_vcvwa"]
-size = Vector2(1000, 50)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hipk1"]
-size = Vector2(999, 49)
+[ext_resource type="Texture2D" uid="uid://d0vlc68mky5rj" path="res://assets/icon.svg" id="2_na84a"]
+[ext_resource type="PackedScene" uid="uid://brhnlp6yp5awh" path="res://scenes/platform.tscn" id="3_n8y0o"]
+[ext_resource type="PackedScene" uid="uid://dpxw854o23v8f" path="res://scenes/turret_enemy.tscn" id="4_1uj4j"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_urefj"]
 size = Vector2(5000, 50)
@@ -46,67 +42,16 @@ size = Vector2(50, 1000)
 position = Vector2(502, 377)
 
 [node name="Player" parent="." instance=ExtResource("1_d88om")]
-position = Vector2(10, -100)
+unique_name_in_owner = true
+position = Vector2(1938, -121)
 jump_force = 800
-
-[node name="Platform" type="StaticBody2D" parent="."]
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform"]
-mesh = SubResource("QuadMesh_vcvwa")
-texture = ExtResource("2_na84a")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
-position = Vector2(-0.5, -0.5)
-shape = SubResource("RectangleShape2D_hipk1")
-
-[node name="Platform2" type="StaticBody2D" parent="."]
-position = Vector2(1119, 250)
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform2"]
-mesh = SubResource("QuadMesh_vcvwa")
-texture = ExtResource("2_na84a")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
-position = Vector2(-0.5, -0.5)
-shape = SubResource("RectangleShape2D_hipk1")
-
-[node name="Platform3" type="StaticBody2D" parent="."]
-position = Vector2(1958, 38)
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform3"]
-mesh = SubResource("QuadMesh_vcvwa")
-texture = ExtResource("2_na84a")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3"]
-position = Vector2(-0.5, -0.5)
-shape = SubResource("RectangleShape2D_hipk1")
-
-[node name="Platform4" type="StaticBody2D" parent="."]
-position = Vector2(2806, -174)
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform4"]
-mesh = SubResource("QuadMesh_vcvwa")
-texture = ExtResource("2_na84a")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform4"]
-position = Vector2(-0.5, -0.5)
-shape = SubResource("RectangleShape2D_hipk1")
-
-[node name="Platform5" type="StaticBody2D" parent="."]
-position = Vector2(2831, 246)
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform5"]
-mesh = SubResource("QuadMesh_vcvwa")
-texture = ExtResource("2_na84a")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform5"]
-position = Vector2(-0.5, -0.5)
-shape = SubResource("RectangleShape2D_hipk1")
 
 [node name="Walls" type="Node" parent="."]
 
 [node name="Top Wall" type="StaticBody2D" parent="Walls"]
 position = Vector2(2500, -25)
+disable_mode = 1
+collision_mask = 0
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Walls/Top Wall"]
 mesh = SubResource("QuadMesh_urefj")
@@ -117,6 +62,8 @@ shape = SubResource("RectangleShape2D_p0klc")
 
 [node name="Bot Wall" type="StaticBody2D" parent="Walls"]
 position = Vector2(2500, 1025)
+disable_mode = 1
+collision_mask = 0
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Walls/Bot Wall"]
 mesh = SubResource("QuadMesh_0wpsh")
@@ -127,6 +74,8 @@ shape = SubResource("RectangleShape2D_hrbu2")
 
 [node name="Left Wall" type="StaticBody2D" parent="Walls"]
 position = Vector2(25, 500)
+disable_mode = 1
+collision_mask = 0
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Walls/Left Wall"]
 mesh = SubResource("QuadMesh_cq80j")
@@ -137,6 +86,8 @@ shape = SubResource("RectangleShape2D_2ei7f")
 
 [node name="Right Wall" type="StaticBody2D" parent="Walls"]
 position = Vector2(4975, 500)
+disable_mode = 1
+collision_mask = 0
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Walls/Right Wall"]
 mesh = SubResource("QuadMesh_lgpaf")
@@ -144,3 +95,23 @@ texture = SubResource("CompressedTexture2D_7cw0p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Right Wall"]
 shape = SubResource("RectangleShape2D_m84jm")
+
+[node name="Platforms" type="Node" parent="."]
+
+[node name="Platform" parent="Platforms" instance=ExtResource("3_n8y0o")]
+position = Vector2(502, 377)
+
+[node name="Platform2" parent="Platforms" instance=ExtResource("3_n8y0o")]
+position = Vector2(2443, 373)
+
+[node name="Platform3" parent="Platforms" instance=ExtResource("3_n8y0o")]
+position = Vector2(955, 602)
+
+[node name="Platform4" parent="Platforms" instance=ExtResource("3_n8y0o")]
+position = Vector2(1400, 827)
+
+[node name="Platform5" parent="Platforms" instance=ExtResource("3_n8y0o")]
+position = Vector2(4205, 374)
+
+[node name="Turret_Enemy" parent="." instance=ExtResource("4_1uj4j")]
+position = Vector2(1600, -318)

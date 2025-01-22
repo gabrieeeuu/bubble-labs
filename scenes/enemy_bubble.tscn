@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://6b0ap224ej4l"]
+
+[ext_resource type="Script" path="res://scripts/enemy_bubble.gd" id="1_fl1o6"]
+[ext_resource type="Texture2D" uid="uid://bd4ckjc4g2agn" path="res://assets/realistic-transparent-3d-bubbles-underwater-soap-bubbles-vector-illustration-png.webp" id="1_k5461"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3gw7e"]
+radius = 50.1597
+
+[node name="EnemyBubble" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_fl1o6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_k5461")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3gw7e")

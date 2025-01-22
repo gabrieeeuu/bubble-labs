@@ -29,8 +29,6 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	check_height()
-	
-	#print(velocity)
 
 func check_inputs():
 	if Input.is_action_just_pressed("heal"):
@@ -38,7 +36,6 @@ func check_inputs():
 	if Input.is_action_just_pressed("take_damage"):
 		take_damage(1)
 	
-
 func check_height():
 	if position.y >= death_height:
 		player_death()
