@@ -22,12 +22,12 @@ func _physics_process(delta: float) -> void:
 		collision_shape_2d.disabled = true
 	
 	if is_fan_active and self.rotation == 90 or self.rotation == -90:  
-		wind_direction.x = wind_direction.x * wind_force
+		wind_direction.x = wind_direction.x * wind_force * delta
 	
 	if is_fan_active and self.rotation == 0 or self.rotation == 180:
-		wind_direction.y = wind_direction.y * wind_force
-	
+		wind_direction.y = wind_direction.y * wind_force * delta
 	
 
 func _on_wind_body_entered(body: Node2D) -> void:
 	has_entered_wind_area.emit()
+	
