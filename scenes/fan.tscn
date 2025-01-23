@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://r1y115lt7oqj"]
+
+[ext_resource type="Texture2D" uid="uid://d0vlc68mky5rj" path="res://assets/icon.svg" id="1_gg1rv"]
+[ext_resource type="Script" path="res://scripts/fan.gd" id="1_up61e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ysxux"]
+size = Vector2(58, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_227vr"]
+size = Vector2(58, 8)
+
+[node name="Fan" type="Area2D"]
+position = Vector2(0, -3)
+script = ExtResource("1_up61e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.90735e-06, -1.49012e-08)
+scale = Vector2(0.453125, 0.0625)
+texture = ExtResource("1_gg1rv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ysxux")
+
+[node name="Wind" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wind"]
+shape = SubResource("RectangleShape2D_227vr")
+disabled = true
+
+[connection signal="body_entered" from="Wind" to="." method="_on_wind_body_entered"]
